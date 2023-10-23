@@ -12,14 +12,15 @@
     <header>
         <div>
             <div id="navbar" class="glossy">
-                <a href="javascript:void(0)">Home</a>
-                <a href="javascript:void(0)">News</a>
-                <a href="javascript:void(0)">Contact</a>
+                <a href="#">Home</a>
+                <a href="#schedule">Schedules</a>
+                <a href="#pulse">Pulse</a>
+                <a href="#temperature">Temperature</a>
                 <a onclick="dropMenu()" class="right" href="javascript:void(0)"><%= locals.user_data.username %>&nbsp;&nbsp;&nbsp;<i class="fa fa-caret-down"></i></a>
             </div>
             <div id="drop_menu" class="hide">
-                <a href=""><li>email@email.com</li></a>
-                <a href="#"><li>LogOut</li></a>
+                <a href=""><li><%= locals.user_data.email %></li></a>
+                <a href="/logout"><li>LogOut</li></a>
             </div>
         </div>
 
@@ -30,7 +31,7 @@
         <br><br><br>
         <section class="container-fluid schedule" id="schedule">
             <h2>Schedules</h2>
-            <br>
+            
             <div class="schedule-content"></div>
         </section>
 
@@ -38,8 +39,9 @@
         
         <section class="container-fluid pulse" id="pulse">
             <h2>Pulse</h2>
-            <br>
-            <div class="pulse-content"></div>
+            <div class="pulse-content">
+                <canvas id="pulseChart" style="width:100%;max-width:600px"></canvas>
+            </div>
         </section>
         
 
@@ -47,8 +49,11 @@
 
         <section class="container-fluid temp" id="temperature">
             <h2>Temperature</h2>
-            <br>
-            <div class="temp-content"></div>
+            
+            <div class="temp-content">
+                <canvas id="temperatureChart" style="width:100%;max-width:600px"></canvas>
+
+            </div>
         </section>
         
         <br><br>
@@ -61,6 +66,13 @@
         </div>
     </footer>
 
+    <!-- scripts -->
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <script>
+        
+    </script>
 
 
     <script src="/javascripts/home.js"></script>

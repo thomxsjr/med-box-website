@@ -1,8 +1,8 @@
 const express = require('express');
-const {initializeApp} = require('firebase/app')
-const {getDatabase, set, ref,update,get, child} = require('firebase/database');
+const { initializeApp } = require('firebase/app')
+const { getDatabase, set, ref,update,get, child } = require('firebase/database');
 const bodyParser = require('body-parser');
-const {getAuth, createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword} = require('firebase/auth');
+const { getAuth, createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signOut } = require('firebase/auth');
 const ejs = require('ejs');
 
 
@@ -28,17 +28,17 @@ const fireStoreApp = initializeApp(firebaseConfig);
 const db = getDatabase(fireStoreApp);
 const auth = getAuth(fireStoreApp);
 
-function isLoggedIn(req,res,next){
-    onAuthStateChanged(auth, function(user) {
-        if (user) {
-            next()
-        } else {
-            res.redirect('/login');
+// function isLoggedIn(){
+    // onAuthStateChanged(auth, function(user) {
+    //     if (user) {
+    //         return true
+    //     } else {
+    //         return false
           
-        }
-      });
+    //     }
+    //   });
     
-}
+// }
 
 app.get('/', (req,res)=>{
     res.render('index');
@@ -58,12 +58,30 @@ app.get('/dashboard/:userID', async (req,res)=>{
         const data = await get(child(dbRef, `users/${req.params.userID}`));
         const user_data = data.val()
         console.log(user_data);
-        res.render('home', {user_data:user_data});
+        onAuthStateChanged(auth, function(user) {
+            if (user) {
+                res.render('home', {user_data:user_data});
+            } else {
+                res.redirect('/');
+            }
+          });
+        
     } catch (err) {
         console.log(err);
         res.status(501).send(err.message);
     }
 });
+
+app.get('/logout', (req, res)=>{
+    signOut(auth)
+    .then(() => {
+        res.redirect('/');
+
+    }).catch((error) => {
+        res.send(error.message)
+      });
+})
+
 app.post('/register',(req,res)=>{
     const bodyData = req.body;
     console.log(bodyData);
@@ -86,10 +104,8 @@ app.post('/register',(req,res)=>{
         res.redirect(`/dashboard/${user.uid}`);
     })
     .catch(function(error) {
-        var error_code = error.code
-        var error_message = error.message
 
-        res.status(501).send(error_message);
+        res.status(501).send(error.message);
     });
 });
 
