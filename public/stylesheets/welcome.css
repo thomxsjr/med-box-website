@@ -1,0 +1,148 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+/*HEADER*//*HEADER*//*HEADER*/
+
+header{
+    position: sticky;
+    top: 0;
+}
+
+
+header .container-fluid {
+    height: 70px;
+    display: flex;
+}
+
+header .container-fluid .logo {
+    font-size: 1.4rem;
+    font-weight: 700;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    margin: 5px;
+    color: white;
+    text-align: center;
+    border-radius: 10px;
+    white-space: nowrap;
+}
+
+header .container-fluid .links {
+
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+    color: white;
+    border-radius: 10px;
+    
+}
+
+header .container-fluid .links li {
+    font-size: 1.2rem;
+    font-weight: 500;
+    padding: 10px;
+    margin: 0 5px;
+    text-align: center;
+    white-space: nowrap;
+    cursor: pointer;
+}
+
+header .container-fluid .signupin {
+    font-size: 1.2rem;
+    font-weight: 600;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    margin: 5px;
+    color: white;
+    text-align: center;
+    border-radius: 10px;
+    white-space: nowrap;
+}
+
+
+/*HEADER*//*HEADER*//*HEADER*/
+/*FOOTER*//*FOOTER*//*FOOTER*/
+
+footer .container-fluid{
+    height: 70px;
+}
+
+footer .iot-dp {
+    font-size: 1.2rem;
+    color: white;
+    height: 50px;
+    margin: 10px;
+    border-radius: 10px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+/*FOOTER*//*FOOTER*//*FOOTER*/
+/* MAIN *//* MAIN *//* MAIN */
+
+
+/* MAIN *//* MAIN *//* MAIN */
+
+a {
+    color: #fff;
+    text-decoration: none;
+}
+a:hover {
+    color: azure!important;
+}
+h1 {
+    margin-bottom: 15px;
+}
+
+.glossy {
+    background: rgba(38, 5, 167, 0.678);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(4.7px);
+    -webkit-backdrop-filter: blur(4.7px);
+    border: 0.5px solid rgba(255, 255, 255, 0.36);
+}
+
+.bg-med-tech {
+    margin-top: 10px;
+    width: 95%;
+    height: 800px;
+    border-radius: 20px;
+    object-fit: cover;
+}
+.avatar {
+    border-radius: 100%;
+}
+
+.profile {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-direction: column;
+    font-size: 20px;
+    
+}
+
+#login {
+    padding: 5px;
+    cursor: pointer;
+}
+#register {
+    padding: 5px;
+    cursor: pointer;
+}
+
