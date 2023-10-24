@@ -42,6 +42,7 @@ const auth = getAuth(fireStoreApp);
 
 app.get('/', (req,res)=>{
     res.render('index');
+    res.status(200).send("hello")
 });
 
 app.get('/login', (req,res)=>{
