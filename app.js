@@ -94,6 +94,7 @@ app.post('/register',(req,res)=>{
         var user = userCredential.user
         
         var user_data = {
+            uid : user.uid,
             displayName : req.body.username,
             email : req.body.email,
             username : req.body.username,
@@ -150,24 +151,21 @@ app.post('/login', (req,res)=>{
 
 app.post('/schedule', (req, res) => {
     try {
-        onAuthStateChanged(auth, (user) => {
-            if(user){
-                console.log(req.body);
-                var post_data = {
-                    schedules: {
-                        first: req.body.first,
-                        second: req.body.second,
-                        third: req.body.third,
-                        fourth: req.body.fourth
-                    }
-                }
-                update(ref(db, 'users/' + user.uid), post_data)
-                res.redirect(`/dashboard/${user.uid}`);
-                res.end();
-            } else {
-                res.redirect('/')
+        
+            
+        console.log(req.body);
+        const userID = req.body.uid
+        var post_data = {
+            schedules: {
+                first: req.body.first,
+                second: req.body.second,
+                third: req.body.third,
+                fourth: req.body.fourth
             }
-        })
+        }
+        update(ref(db, 'users/' + userID), post_data)
+        res.redirect(`/dashboard/${userID}`);
+        res.end();
         
     } catch {
         res.redirect('/');
