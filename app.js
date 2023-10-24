@@ -107,12 +107,12 @@ app.post('/register',(req,res)=>{
                 fourth: ""
             },
             pulseData: {
-                latestPulse : 0,
+                latestPulse : '00',
                 pulseHistory : [],
                 time : []
             },
             temperatureData: {
-                latestTemperature : 0,
+                latestTemperature : '00',
                 temperatureHistory : [],
                 time : []
             }

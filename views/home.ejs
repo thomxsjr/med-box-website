@@ -65,25 +65,40 @@
 
         <br><br>
         
-        <section class="container-fluid pulse" id="pulse">
+        <!-- <section class="container-fluid pulse" id="pulse">
             <div class="pulse-content">
                 <h2 class="heading">Pulse</h2>
-                <canvas id="pulseChart" style="max-height: 600px; width:100%;max-width:1000px"></canvas>
+                <canvas id="pulseChart" style="max-height: 600px; width:50%;max-width:1000px"></canvas>
             </div>
-        </section>
+        </section> -->
+
+        <div class="pulse-content container-fluid pulse" id="pulse">
+            <h2 class="heading row">Pulse</h2>
+            <div class="row">
+                <canvas class="col" id="pulseChart" style="max-height: 600px; width:50%;max-width:1000px"></canvas>
+                <div class="latest_pulse col text-center">
+                    <p class="value"><%= locals.user_data.pulseData.latestPulse %></p>
+                    <p class="title">Latest Pulse</p>
+                </div>
+            </div>
+            
+        </div>
         
 
         <br><br>
 
-        <section class="container-fluid temp" id="temperature">
-            
-            <div class="temp-content">
-                <h2 class="heading">Temperature</h2>
-                <canvas id="temperatureChart" style="max-height: 600px; width:100%;max-width:1000px"></canvas>
-
+        <div class="temp-content container-fluid temp" id="temperature">
+            <h2 class="heading row">Temperature</h2>
+            <div class="row">
+                <canvas class="col" id="temperatureChart" style="max-height: 600px; width:50%;max-width:1000px"></canvas>
+                <div class="latest_temperature col text-center">
+                    <p class="value"><%= locals.user_data.temperatureData.latestTemperature %></p>
+                    <p class="title">Latest Temperature</p>
+                </div>
             </div>
-        </section>
-        
+            
+        </div>
+                    
         <br><br>
     </main>
 
