@@ -39,7 +39,7 @@
                 <form class="flex-container" action='/schedule' enctype="application/x-www-form-urlencoded" method="post">
                     <div class="morning">
                         <h3>Morning</h3>
-                        <input value="<%= locals.user_data.schedules.third %>" type="time" name="first" id="first">
+                        <input value="<%= locals.user_data.schedules.first %>" type="time" name="first" id="first">
                     </div>
                     <div class="afternoon">
                         <h3>Afternoon</h3>
@@ -65,12 +65,6 @@
 
         <br><br>
         
-        <!-- <section class="container-fluid pulse" id="pulse">
-            <div class="pulse-content">
-                <h2 class="heading">Pulse</h2>
-                <canvas id="pulseChart" style="max-height: 600px; width:50%;max-width:1000px"></canvas>
-            </div>
-        </section> -->
 
         <div class="pulse-content container-fluid pulse" id="pulse">
             <h2 class="heading row">Pulse</h2>

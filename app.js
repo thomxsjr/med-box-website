@@ -152,9 +152,8 @@ app.post('/login', (req,res)=>{
 app.post('/schedule', (req, res) => {
     try {
         
-            
-        console.log(req.body);
         const userID = req.body.uid
+        console.log(userID);
         var post_data = {
             schedules: {
                 first: req.body.first,
