@@ -97,7 +97,24 @@ app.post('/register',(req,res)=>{
             email : req.body.email,
             username : req.body.username,
             age : req.body.age,
-            last_login: Date.now()
+            last_login: Date.now(),
+            schedules: {
+                first: "",
+                second: "",
+                third: "",
+                fourth: ""
+            },
+            pulseData: {
+                latestPulse : 0,
+                pulseHistory : [],
+                time : []
+            },
+            temperatureData: {
+                latestTemperature : 0,
+                temperatureHistory : [],
+                time : []
+            }
+        
         }
         set(ref(db, 'users/' + user.uid), user_data);
         
@@ -129,6 +146,33 @@ app.post('/login', (req,res)=>{
         res.status(501).send(error.message);
     });
 });
+
+app.post('/schedule', (req, res) => {
+    try {
+        onAuthStateChanged(auth, (user) => {
+            if(user){
+                console.log(req.body);
+                var post_data = {
+                    schedules: {
+                        first: req.body.first,
+                        second: req.body.second,
+                        third: req.body.third,
+                        fourth: req.body.fourth
+                    }
+                }
+                update(ref(db, 'users/' + user.uid), post_data)
+                res.redirect(`/dashboard/${user.uid}`);
+                res.end();
+            } else {
+                res.redirect('/')
+            }
+        })
+        
+    } catch {
+        res.redirect('/');
+    }
+    
+})
 
 app.get('*', (req,res)=>{
     res.status(404).send('Invalid Request');

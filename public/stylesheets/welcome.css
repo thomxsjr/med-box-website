@@ -4,6 +4,9 @@
     box-sizing: border-box;
 }
 
+body {
+    background-color: #F4F5FF;
+}
 
 /*HEADER*//*HEADER*//*HEADER*/
 
@@ -110,11 +113,10 @@ h1 {
 }
 
 .glossy {
-    background: rgba(38, 5, 167, 0.678);
+    background: rgba(0, 0, 0, 0.8);
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(4.7px);
     -webkit-backdrop-filter: blur(4.7px);
-    border: 0.5px solid rgba(255, 255, 255, 0.36);
 }
 
 .bg-med-tech {

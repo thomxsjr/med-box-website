@@ -1,32 +1,43 @@
 body {
-    background-color: #e0d6ff;
+    color: #ffffff;
+    background-color: #F4F5FF;
     height: 100%;
+}
+
+h1 {
+    font-size: 40px;
 }
 
 label {
     font-size: 22px;
+    margin-bottom: 10px;
 }
 
 input {
-    border-radius: 10px;
+    border-radius: 7px;
     width: 300px;
     height: 30px;
     padding: 3PX;
 }
 
-select {
-    border-radius: 8px;
-    padding: 3PX;
-}
 
 .container {
     margin: 30px auto;
     text-align: center;
+    
 }
 
-.signup {
-    
-    width: 100%;
-    position: relative;
-    top: 70px;
+.login {
+    border-radius: 20px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.6);
+    margin-top: 200px;
+    width: 500px;
+    padding: 20px;
+    background-color: #28282B;
+
+
 }
+button {
+    width: 100px;
+}
+

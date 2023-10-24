@@ -26,21 +26,47 @@
 
     </header>
 
-
+<br><br><br>
     <main>
-        <br><br><br>
+    
+        <h1 class="welcome">Hello, <%= locals.user_data.username %> 👋</h1>
+
+        <!-- schedules -->
         <section class="container-fluid schedule" id="schedule">
-            <h2>Schedules</h2>
             
-            <div class="schedule-content"></div>
+            <div class="schedule-content">
+                <h2 class="heading">Schedules</h2>
+                <form class="flex-container" action='/schedule' enctype="application/x-www-form-urlencoded" method="post">
+                    <div class="morning">
+                        <h3>Morning</h3>
+                        <input value="<%= locals.user_data.schedules.third %>" type="time" name="first" id="first">
+                    </div>
+                    <div class="afternoon">
+                        <h3>Afternoon</h3>
+                        <input value="<%= locals.user_data.schedules.second %>" type="time" name="second" id="second">
+                    </div>
+                    <div class="night">
+                        <h3>Night</h3>
+                        <input value="<%= locals.user_data.schedules.third %>" type="time" name="third" id="third">
+                    </div>
+                    <div class="other">
+                        <h3>Other</h3>
+                        <input value="<%= locals.user_data.schedules.fourth %>" type="time" name="fourth" id="fourth">
+                    </div>
+                
+                    <button class="btn btn-primary" type="submit">Set Schedule</button>
+                    
+                </form>
+
+            </div>
         </section>
 
         <br><br>
         
         <section class="container-fluid pulse" id="pulse">
-            <h2>Pulse</h2>
             <div class="pulse-content">
-                <canvas id="pulseChart" style="width:100%;max-width:600px"></canvas>
+                <h2 class="heading">Pulse</h2>
+                <canvas id="pulseChart" style="max-height: 600px; width:100%;max-width:1000px"></canvas>
             </div>
         </section>
         
@@ -48,10 +74,10 @@
         <br><br>
 
         <section class="container-fluid temp" id="temperature">
-            <h2>Temperature</h2>
             
             <div class="temp-content">
-                <canvas id="temperatureChart" style="width:100%;max-width:600px"></canvas>
+                <h2 class="heading">Temperature</h2>
+                <canvas id="temperatureChart" style="max-height: 600px; width:100%;max-width:1000px"></canvas>
 
             </div>
         </section>
@@ -67,10 +93,22 @@
     </footer>
 
     <!-- scripts -->
+    <script src="https://cdn.metroui.org.ua/v4/js/metro.min.js"></script>
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
     <script>
+        const pulsexValues = [<%= locals.user_data.pulseData.time %>];
+        const pulseyValues = [<%= locals.user_data.pulseData.pulseHistory %>];
+        
+        const temperaturexValues = [<%= locals.user_data.temperatureData.time %>]
+        const temperatureyValues = [<%= locals.user_data.temperatureData.temperatureHistory %>];
+        
+
+
+        // document.getElementById('first').value = first[0];
+        // document.getElementById('second').value = second[0];
+        // document.getElementById('third').value = third[0];
         
     </script>
 

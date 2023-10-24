@@ -1,12 +1,12 @@
 
 
 
-Chart.defaults.color = '#fff';
+Chart.defaults.color = '#000';
+
 
 // pulse chart
 
-const pulsexValues = [50,60,70,80,90,100,110,120,130,140,150];
-const pulseyValues = [7,8,8,9,9,9,10,11,14,14,15];
+
 
 
 new Chart("pulseChart", {
@@ -31,10 +31,8 @@ new Chart("pulseChart", {
 });
 
 
-// pulse chart
+// temperature chart
 
-const temperaturexValues = [50,60,70,80,90,100,110,120,130,140,150];
-const temperatureyValues = [7,8,8,9,9,9,10,11,14,14,15];
 
 new Chart("temperatureChart", {
   type: "line",
@@ -83,4 +81,16 @@ window.onclick = function(e) {
       myDropdown.classList.remove('show');
     }
   }
+}
+
+first = document.getElementById('first').value
+second = document.getElementById('second').value
+third = document.getElementById('third').value
+fourth = document.getElementById('fourth').value
+
+function reset() {
+  first = "";
+  second = "";
+  third = "";
+  fourth = "";
 }
