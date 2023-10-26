@@ -73,15 +73,6 @@ app.get('/dashboard/:userID', async (req,res)=>{
     }
 });
 
-app.get('/logout', (req, res)=>{
-    signOut(auth)
-    .then(() => {
-        res.redirect('/');
-
-    }).catch((error) => {
-        res.send(error.message)
-      });
-})
 
 app.post('/register',(req,res)=>{
     const bodyData = req.body;
@@ -89,7 +80,6 @@ app.post('/register',(req,res)=>{
 
     createUserWithEmailAndPassword(auth, req.body.email, req.body.password)
     .then(function(userCredential){
-
         
         var user = userCredential.user
         
@@ -120,8 +110,13 @@ app.post('/register',(req,res)=>{
             },
             heartAttackPrediction : ""
         
-        }
+        };
+        var device_data = {
+            uid : user.uid
+        };
+
         set(ref(db, 'users/' + user.uid), user_data);
+        set(ref(db, 'devices/' + req.body.udcode), device_data);
         
         res.redirect(`/dashboard/${user.uid}`);
     })
@@ -151,6 +146,16 @@ app.post('/login', (req,res)=>{
         res.status(501).send(error.message);
     });
 });
+
+app.get('/logout', (req, res)=>{
+    signOut(auth)
+    .then(() => {
+        res.redirect('/');
+
+    }).catch((error) => {
+        res.send(error.message)
+      });
+})
 
 app.post('/schedule', (req, res) => {
     try {
