@@ -41,3 +41,12 @@ button {
     width: 100px;
 }
 
+.gender {
+    background-color: #28282B;
+    border: #ffffff 1px solid;
+    color: #ffffff;
+    padding: 10px;
+    width: 120px;
+    border-radius: 50px;
+}
+

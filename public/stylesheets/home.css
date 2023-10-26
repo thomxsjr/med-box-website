@@ -160,7 +160,7 @@ footer .iot-dp {
   padding-bottom: 10px;
     background-color: #ffffff;
     border-radius: 20px;
-    box-shadow: 10 0px 0px rgba(0, 0, 0, 0.8);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
 
 }
 .heading {
@@ -204,6 +204,31 @@ footer .iot-dp {
 
 }
 
+.prediction {
+  position: relative;
+  display: flex;
+  padding-top: 10px;
+  padding-left: 10px;
+  width: 98%;
+  background-color: #ffffff;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  border-radius: 20px
+
+}
+
+.predText {
+  display: block;
+  margin: 0%;
+  font-size: 20px;
+  font-weight: 600;
+  padding: 0%;
+}
+.predButton {
+  position: absolute;
+  right: 20px;
+  bottom: 30px;
+
+}
 
 
 /* MAIN *//* MAIN *//* MAIN */

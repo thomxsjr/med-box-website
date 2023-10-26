@@ -95,9 +95,11 @@ app.post('/register',(req,res)=>{
         
         var user_data = {
             uid : user.uid,
+            udcode : req.body.udcode,
             displayName : req.body.username,
             email : req.body.email,
             username : req.body.username,
+            gender : req.body.gender,
             age : req.body.age,
             last_login: Date.now(),
             schedules: {
@@ -115,7 +117,8 @@ app.post('/register',(req,res)=>{
                 latestTemperature : '00',
                 temperatureHistory : [],
                 time : []
-            }
+            },
+            heartAttackPrediction : ""
         
         }
         set(ref(db, 'users/' + user.uid), user_data);

@@ -6,7 +6,7 @@
   "scripts": {
     "start": "nodemon app.js"
   },
-  "author": "Nirmal",
+  "author": "Nirmal Kurian Thomas",
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.20.2",

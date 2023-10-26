@@ -69,7 +69,7 @@
         <div class="pulse-content container-fluid pulse" id="pulse">
             <h2 class="heading row">Pulse</h2>
             <div class="row">
-                <canvas class="col" id="pulseChart" style="max-height: 600px; width:50%;max-width:1000px"></canvas>
+                <canvas class="col" id="pulseChart" style="max-height: 600px; width:50%;max-width:1400px"></canvas>
                 <div class="latest_pulse col text-center">
                     <p class="value"><%= locals.user_data.pulseData.latestPulse %></p>
                     <p class="title">Latest Pulse</p>
@@ -84,7 +84,7 @@
         <div class="temp-content container-fluid temp" id="temperature">
             <h2 class="heading row">Temperature</h2>
             <div class="row">
-                <canvas class="col" id="temperatureChart" style="max-height: 600px; width:50%;max-width:1000px"></canvas>
+                <canvas class="col" id="temperatureChart" style="max-height: 600px; width:50%;max-width:1400px"></canvas>
                 <div class="latest_temperature col text-center">
                     <p class="value"><%= locals.user_data.temperatureData.latestTemperature %></p>
                     <p class="title">Latest Temperature</p>
@@ -93,10 +93,17 @@
             
         </div>
                     
-        <br><br>
+        <br>
+        <div class="container-fluid prediction">
+            <div class="predText">
+            <p>Heart Attack Prediction</p>
+            <p>Your risk of heart attack is: <span id="predictionResult"></span></p>
+            </div>
+            <button type="submit" class="btn btn-primary predButton">Check</button>
+        </div>
     </main>
 
-
+<br>
     <footer>
         <div class="container-fluid">
             <div class="iot-dp glossy">&copy; IoT Design Project</div>
@@ -108,7 +115,10 @@
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
+
     <script>
+        
+        
         const pulsexValues = [<%= locals.user_data.pulseData.time %>];
         const pulseyValues = [<%= locals.user_data.pulseData.pulseHistory %>];
         
