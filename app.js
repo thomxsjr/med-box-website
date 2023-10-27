@@ -28,17 +28,7 @@ const fireStoreApp = initializeApp(firebaseConfig);
 const db = getDatabase(fireStoreApp);
 const auth = getAuth(fireStoreApp);
 
-// function isLoggedIn(){
-    // onAuthStateChanged(auth, function(user) {
-    //     if (user) {
-    //         return true
-    //     } else {
-    //         return false
-          
-    //     }
-    //   });
-    
-// }
+
 
 app.get('/', (req,res)=>{
     res.render('index');
@@ -99,14 +89,16 @@ app.post('/register',(req,res)=>{
                 fourth: ""
             },
             pulseData: {
+                startIndex : -12,
                 latestPulse : '00',
-                pulseHistory : [],
-                time : []
+                pulseHistory : '',
+                time : ''
             },
             temperatureData: {
+                startIndex : -12,
                 latestTemperature : '00',
-                temperatureHistory : [],
-                time : []
+                temperatureHistory : '',
+                time : ''
             },
             heartAttackPrediction : ""
         

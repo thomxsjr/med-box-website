@@ -119,17 +119,14 @@
     <script>
         
         
-        const pulsexValues = [<%= locals.user_data.pulseData.time %>];
-        const pulseyValues = [<%= locals.user_data.pulseData.pulseHistory %>];
+        const pulsexValues = <%= locals.user_data.pulseData.time %>;
+        const pulseyValues = <%= locals.user_data.pulseData.pulseHistory %>;
         
-        const temperaturexValues = [<%= locals.user_data.temperatureData.time %>]
-        const temperatureyValues = [<%= locals.user_data.temperatureData.temperatureHistory %>];
+        const temperaturexValues = <%= locals.user_data.temperatureData.time %>;
+        const temperatureyValues = <%= locals.user_data.temperatureData.temperatureHistory %>;
         
 
 
-        // document.getElementById('first').value = first[0];
-        // document.getElementById('second').value = second[0];
-        // document.getElementById('third').value = third[0];
         
     </script>
 

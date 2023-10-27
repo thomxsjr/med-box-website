@@ -54,6 +54,8 @@ new Chart("temperatureChart", {
   }
 });
 
+
+
 // navbar
 
 
