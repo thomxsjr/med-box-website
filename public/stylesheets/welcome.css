@@ -127,6 +127,7 @@ h1 {
     object-fit: cover;
 }
 .avatar {
+    object-fit: cover;
     border-radius: 100%;
 }
 
@@ -137,6 +138,11 @@ h1 {
     flex-direction: column;
     font-size: 20px;
     
+}
+.name {
+    font-size: 24px;
+    font-weight: 500;
+    margin-top: 15px;
 }
 
 #login {

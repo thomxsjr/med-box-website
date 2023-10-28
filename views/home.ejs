@@ -39,15 +39,15 @@
                 <form class="flex-container" action='/schedule' enctype="application/x-www-form-urlencoded" method="post">
                     <div class="morning">
                         <h3>Morning</h3>
-                        <input value="<%= locals.user_data.schedules.first %>" type="time" name="first" id="first">
+                        <input min="03:00" max="11:59" value="<%= locals.user_data.schedules.first %>" type="time" name="first" id="first">
                     </div>
                     <div class="afternoon">
                         <h3>Afternoon</h3>
-                        <input value="<%= locals.user_data.schedules.second %>" type="time" name="second" id="second">
+                        <input min="12:00" max="18:59" value="<%= locals.user_data.schedules.second %>" type="time" name="second" id="second">
                     </div>
                     <div class="night">
                         <h3>Night</h3>
-                        <input value="<%= locals.user_data.schedules.third %>" type="time" name="third" id="third">
+                        <input min="19:00" max="2:59" value="<%= locals.user_data.schedules.third %>" type="time" name="third" id="third">
                     </div>
                     <div class="other">
                         <h3>Other</h3>
