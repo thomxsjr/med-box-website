@@ -4,6 +4,7 @@ const { getDatabase, set, ref,update,get, child } = require('firebase/database')
 const bodyParser = require('body-parser');
 const { getAuth, createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signOut } = require('firebase/auth');
 const ejs = require('ejs');
+const axios = require('axios');
 
 
 const app = express();
@@ -48,7 +49,6 @@ app.get('/dashboard/:userID', async (req,res)=>{
         const dbRef = ref(db);
         const data = await get(child(dbRef, `users/${req.params.userID}`));
         const user_data = data.val()
-        console.log(user_data);
         onAuthStateChanged(auth, function(user) {
             if (user) {
                 res.render('home', {user_data:user_data});
@@ -169,6 +169,47 @@ app.post('/schedule', (req, res) => {
     } catch {
         res.redirect('/');
     }
+    
+})
+
+app.post('/prediction', (req, res) => {
+
+
+    const userID = req.body.uid;
+    const age = Number(req.body.age);
+    const gender = Number(req.body.gender);
+    const pulseRate = req.body.pulseRate;
+
+    axios.get(`https://smart-med-box-ml.onrender.com/${gender}/${age}/${pulseRate}`)
+    .then(response => {
+        console.log(response.data.result);
+        if(response.data.result == 0) {
+            var post_data = {
+                heartAttackPrediction : "Low Risk"
+            }
+            update(ref(db, 'users/' + userID), post_data)
+
+        }
+        else if(response.data.result == 1) {
+            var post_data = {
+                heartAttackPrediction : "High Risk"
+            }
+            update(ref(db, 'users/' + userID), post_data)
+
+        }
+        else {
+            console.log('Failed')
+        }
+        
+
+        res.redirect(`/dashboard/${userID}#prediction`);
+        res.end();
+    })
+    .catch(error => {
+        console.log(error);
+
+        res.redirect('/');
+    });
     
 })
 

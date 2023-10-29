@@ -94,12 +94,19 @@
         </div>
                     
         <br>
-        <div class="container-fluid prediction">
+        <div class="container-fluid prediction" id="prediction">
             <div class="predText">
             <p>Heart Attack Prediction</p>
-            <p>Your risk of heart attack is: <span id="predictionResult"></span></p>
+            <p>Your risk of heart attack is: <span id="predictionResult"><%= locals.user_data.heartAttackPrediction %></span></p>
             </div>
-            <button type="submit" class="btn btn-primary predButton">Check</button>
+            <form action="/prediction" method="post">
+                <input value="<%= locals.user_data.uid %>" type="hidden" name="uid" id="uid">
+                <input value="<%= locals.user_data.age %>" type="hidden" name="age" id="age">
+                <input value="<%= locals.user_data.gender %>" type="hidden" name="gender" id="gender">
+                <input value="<%= locals.user_data.pulseData.latestPulse %>" type="hidden" name="pulseRate" id="pulseRate">
+                <button type="submit" class="btn btn-primary predButton">Check</button>
+            </form>
+            
         </div>
     </main>
 
