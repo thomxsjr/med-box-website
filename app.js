@@ -174,13 +174,19 @@ app.post('/schedule', (req, res) => {
 
 app.post('/prediction', (req, res) => {
 
-
+    
     const userID = req.body.uid;
     const age = Number(req.body.age);
     const gender = Number(req.body.gender);
-    const pulseRate = req.body.pulseRate;
+    const pulse_history = JSON.parse(req.body.pulseHistory);
+    const pulse_length = pulse_history.length;
+    let pulse_sum = 0;
+    for (let i = 0; i < pulse_length; i++ ) {
+        pulse_sum += pulse_history[i];
+    }
+    let pulse_average = pulse_sum/pulse_length;
 
-    axios.get(`https://smart-med-box-ml.onrender.com/${gender}/${age}/${pulseRate}`)
+    axios.get(`https://smart-med-box-ml.onrender.com/${gender}/${age}/${pulse_average}`)
     .then(response => {
         console.log(response.data.result);
         if(response.data.result == 0) {
