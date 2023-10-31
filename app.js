@@ -1,4 +1,5 @@
 const express = require('express');
+const favicon = require('serve-favicon')
 const { initializeApp } = require('firebase/app')
 const { getDatabase, set, ref,update,get, child } = require('firebase/database');
 const bodyParser = require('body-parser');
@@ -11,8 +12,9 @@ const app = express();
 
 app.set('view engine', 'ejs');
 
-app.use(bodyParser.urlencoded({ extended: true }))
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(__dirname+'/public/'));
+app.use(favicon(__dirname+'/public/images/favicon.png'));
 
 const firebaseConfig = {
     apiKey: "AIzaSyA84so8AJpMIOMCApdLGdZQ-vFsu4F9bKY",
