@@ -1,19 +1,23 @@
 
 
 
-Chart.defaults.color = '#000';
-
-
-// pulse chart
-
-
-
+function showChart(pulsexValues, pulseyValues, temperaturexValues, temperatureyValues) {
+  Chart.defaults.color = '#000';
+  pulsexValues = pulsexValues.slice(1,pulsexValues.length-1)
+  pulsexValues = pulsexValues.split(',')
+  pulseyValues = pulseyValues.slice(1,pulseyValues.length-1)
+  pulseyValues = pulseyValues.split(',');
+  temperaturexValues = temperaturexValues.slice(1, temperaturexValues.length-1);
+  temperaturexValues = temperaturexValues.split(',');
+  temperatureyValues = temperatureyValues.slice(1,temperatureyValues.length-1);
+  temperatureyValues = temperatureyValues.split(',');
 
 new Chart("pulseChart", {
   type: "line",
   data: {
     labels: pulsexValues,
     datasets: [{
+      label : 'BPM', 
       fill: false,
       lineTension: 0,
       color: "rgba(255, 255, 255, 1.0)",
@@ -25,7 +29,9 @@ new Chart("pulseChart", {
   options: {
     legend: {display: false},
     scales: {
-      yAxes: [{ticks: {min: 6, max:16}}],
+      y : {
+        type : 'linear'
+      },
     }
   }
 });
@@ -39,6 +45,7 @@ new Chart("temperatureChart", {
   data: {
     labels: temperaturexValues,
     datasets: [{
+      label : 'Faranheit',
       fill: false,
       lineTension: 0,
       backgroundColor: "rgba(0,0,255,1.0)",
@@ -49,10 +56,13 @@ new Chart("temperatureChart", {
   options: {
     legend: {display: false},
     scales: {
-      yAxes: [{ticks: {min: 6, max:16}}],
+      y : {
+        type : 'linear'
+      }
     }
   }
 });
+}
 
 
 
@@ -83,16 +93,4 @@ window.onclick = function(e) {
       myDropdown.classList.remove('show');
     }
   }
-}
-
-first = document.getElementById('first').value
-second = document.getElementById('second').value
-third = document.getElementById('third').value
-fourth = document.getElementById('fourth').value
-
-function reset() {
-  first = "";
-  second = "";
-  third = "";
-  fourth = "";
 }

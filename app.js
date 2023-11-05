@@ -46,6 +46,20 @@ app.get('/register', (req,res)=>{
     res.render('register')
 });
 
+
+
+app.get('/data/:userID', async (req,res)=>{
+    try {
+        const dbRef = ref(db);
+        const data = await get(child(dbRef, `users/${req.params.userID}`));
+        const user_data = data.val()
+        res.status(200).json({user_data : user_data});
+    } catch(err) {
+        res.status(500).json({res:false});
+    }
+});
+
+
 app.get('/dashboard/:userID', async (req,res)=>{
     try {
         const dbRef = ref(db);

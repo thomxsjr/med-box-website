@@ -124,16 +124,24 @@
 
 
     <script>
+        async function getUser(id) {
+            const res = await fetch(`/data/${id}`);
+            let data = await res.json();
+            data = data.user_data;
+            showChart(data.pulseData.time, data.pulseData.pulseHistory, data.temperatureData.time, data.temperatureData.temperatureHistory);
+        }
+        const user_id = "<%= locals.user_data.uid %>"
+        getUser(user_id);
         
+        // const pulsexValue= locals.user_data.pulseData.time;  
+        // const pulseyValues = locals.user_data.pulseData.pulseHistory;
         
-        const pulsexValues = <%= locals.user_data.pulseData.time %>;
-        const pulseyValues = <%= locals.user_data.pulseData.pulseHistory %>;
-        
-        const temperaturexValues = <%= locals.user_data.temperatureData.time %>;
-        const temperatureyValues = <%= locals.user_data.temperatureData.temperatureHistory %>;
-        
+        // const temperaturexValues = locals.user_data.temperatureData.time;
+        // const temperatureyValues = locals.user_data.temperatureData.temperatureHistory;
 
-
+        // console.log(pulsexValues)
+        // console.log(pulseyValues)
+        
         
     </script>
 
