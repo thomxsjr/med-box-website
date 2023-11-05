@@ -45,7 +45,7 @@ new Chart("temperatureChart", {
   data: {
     labels: temperaturexValues,
     datasets: [{
-      label : 'Faranheit',
+      label : 'Fahrenheit',
       fill: false,
       lineTension: 0,
       backgroundColor: "rgba(0,0,255,1.0)",
