@@ -92,13 +92,13 @@ app.post('/register',(req,res)=>{
             },
             pulseData: {
                 startIndex : -12,
-                latestPulse : '00',
+                latestPulse : 0,
                 pulseHistory : '',
                 time : ''
             },
             temperatureData: {
                 startIndex : -12,
-                latestTemperature : '00',
+                latestTemperature : 0,
                 temperatureHistory : '',
                 time : ''
             },
@@ -186,7 +186,7 @@ app.post('/prediction', (req, res) => {
     for (let i = 0; i < pulse_length; i++ ) {
         pulse_sum += pulse_history[i];
     }
-    let pulse_average = pulse_sum/pulse_length;
+    let pulse_average = Math.round(pulse_sum/pulse_length);
 
     axios.get(`https://smart-med-box-ml.onrender.com/${gender}/${age}/${pulse_average}`)
     .then(response => {
@@ -214,9 +214,9 @@ app.post('/prediction', (req, res) => {
         res.end();
     })
     .catch(error => {
+        
+        res.redirect(`/`);
         console.log(error);
-
-        res.redirect('/');
     });
     
 })
